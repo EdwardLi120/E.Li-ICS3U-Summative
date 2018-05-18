@@ -33,6 +33,7 @@
 		</Compiler>
 		<Unit filename="Summative.cbp" />
 		<Unit filename="animations.cpp" />
+		<Unit filename="collision.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
