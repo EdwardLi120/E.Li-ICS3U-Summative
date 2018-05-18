@@ -4,9 +4,9 @@
 
 #define WHITE   al_map_rgb(255,255,255)
 
-const float FPS = 6;			// set frame rate   (60 would be more normal)
-const int SCREEN_W = 640;       // screen width
-const int SCREEN_H = 640;       // screen height
+const float FPS = 6;
+const int SCREEN_W = 640;
+const int SCREEN_H = 640;
 
 int main(int argc, char *argv[]) {
 	ALLEGRO_DISPLAY *display = NULL;
