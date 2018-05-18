@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1526494971 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\enemies.cpp
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+	"header.h"
+
+1526494824 p:\ics3u\summative\e.li-ics3u-summative\summative\summative\header.h
+
+1526495006 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\firing.cpp
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+	"header.h"
+
+1526495113 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\initialization.cpp
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+	"header.h"
+
+1526586916 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\animations.cpp
+	<allegro5/allegro.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+
