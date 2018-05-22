@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1526494971 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\enemies.cpp
+1527011168 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\enemies.cpp
 	<stdio.h>
+	<math.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_font.h>
 	<allegro5/allegro_ttf.h>
@@ -8,8 +9,10 @@
 	<allegro5/allegro_native_dialog.h>
 	<allegro5/allegro_primitives.h>
 	"header.h"
+	<time.h>
+	<stdlib.h>
 
-1526494824 p:\ics3u\summative\e.li-ics3u-summative\summative\summative\header.h
+1527010897 p:\ics3u\summative\e.li-ics3u-summative\summative\summative\header.h
 
 1526495006 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\firing.cpp
 	<stdio.h>
@@ -21,7 +24,7 @@
 	<allegro5/allegro_primitives.h>
 	"header.h"
 
-1526495113 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\initialization.cpp
+1527011163 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\initialization.cpp
 	<stdio.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_font.h>
@@ -30,9 +33,74 @@
 	<allegro5/allegro_native_dialog.h>
 	<allegro5/allegro_primitives.h>
 	"header.h"
+	<time.h>
+	<stdlib.h>
 
 1526666961 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\animations.cpp
 	<allegro5/allegro.h>
 	<allegro5/allegro_image.h>
 	<allegro5/allegro_native_dialog.h>
+
+1527011169 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\abmarrival.cpp
+	<stdio.h>
+	<math.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+	"header.h"
+	<time.h>
+	<stdlib.h>
+
+1527011167 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\fire.cpp
+	<stdio.h>
+	<math.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+	"header.h"
+	<time.h>
+	<stdlib.h>
+
+1527011166 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\hit detection.cpp
+	<stdio.h>
+	<math.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+	"header.h"
+	<time.h>
+	<stdlib.h>
+
+1527011164 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\main.cpp
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+	"header.h"
+	<time.h>
+	<stdlib.h>
+
+1527011165 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\movement.cpp
+	<stdio.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+	"header.h"
+	<time.h>
+	<stdlib.h>
 
