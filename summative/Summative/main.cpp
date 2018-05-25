@@ -1,5 +1,4 @@
 //main.cpp
-//#include "stdafx.h"
 #include <stdio.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
@@ -17,29 +16,29 @@ int main(int argc, char **argv)
 	ALLEGRO_DISPLAY *display = NULL;
 	ALLEGRO_TIMER *timer = NULL;
 	ALLEGRO_BITMAP *imageCrosshair = NULL;
+	ALLEGRO_BITMAP *imageBase = NULL;
 	ALLEGRO_EVENT_QUEUE *event_queue = NULL;
 
 	//object variable
 	Crosshair crosshair;
 	Abm abm[ABM_COUNT]; //30 anti-ballstic missiles
-	Enemy enemy[ENEMY_COUNT]; //20 enemies
-	Mirv mirv[ENEMY_COUNT];
+	Enemy enemy[ENEMY_COUNT][SPLIT_COUNT];
 
 	int lives = 3;
-	int curr_num_enemy = 0;  //num of enemies on screen
+	int curr_enemy_count = 0;  //num of enemies on screen
 	int num_spawned = 0;
 
 	srand(time(0));
 
-	initAllegro(&display, &timer, &imageCrosshair, &event_queue);
+	initAllegro(&display, &timer, &imageCrosshair, &imageBase, &event_queue);
 
 	initCrosshair(&crosshair, imageCrosshair);
 
 	initAbm(abm);
 
-	initEnemy(enemy, mirv);
+	initEnemy(enemy);
 											    //or &crosshair?
-	playerMovement(display, timer, imageCrosshair, event_queue, crosshair, abm, enemy, &curr_num_enemy, &num_spawned, mirv);
+	playerMovement(display, timer, imageCrosshair, event_queue, crosshair, abm, enemy, &curr_enemy_count, &num_spawned);
 
 
 	//al_set_target_bitmap(image);
@@ -49,4 +48,3 @@ int main(int argc, char **argv)
 
 	return 0;
 }
-
