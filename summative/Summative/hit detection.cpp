@@ -1,8 +1,8 @@
-//hit detection.cpp
+//hit_detection.cpp
 //#include "stdafx.h"
 #include <stdio.h>
 #include <math.h>
-#include <allegro5/allegro.h> // Include the allegro header file.
+#include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_image.h>
@@ -12,63 +12,55 @@
 #include <time.h>
 #include <stdlib.h>
 
-/*void hitDetection(struct abmData * abm, Enemy * enemy) {
-
-	//check collision between abm and main enemy missile (not mirv's)
+void hitDetection(struct abmData * abm, Enemy enemy[ENEMY_COUNT][SPLIT_COUNT], int * curr_enemy_count) {
 	for (int i = 0; i < ABM_COUNT; i++) {
-		if (abm[i].arrived && !abm[i].exploded) {
-			for (int j = 0; j < ENEMY_COUNT; j++) {
-				if (enemy[j].launched) {
-					if (abm[i].topRight.x >= enemy[i].topLeft.x &&
-						abm[i].topLeft.x <= enemy[i].topRight.x &&
-						abm[i].bottomLeft.y >= enemy[i].topLeft.y &&
-						abm[i].topLeft.y <= enemy[i].bottomLeft.y) {
-						printf("Hit");
+		if (abm[i].arrived && !abm[i].doneExploding) {
 
+			for (int j = 0; j < ENEMY_COUNT; j++) {
+				for (int k = 0; k < SPLIT_COUNT; k++) {
+					if (enemy[j][k].launched) {
+
+						//check bounds
+						if (abm[i].topRight.x >= enemy[j][k].topLeft.x &&
+							abm[i].topLeft.x <= enemy[j][k].topRight.x &&
+							abm[i].bottomLeft.y >= enemy[j][k].topLeft.y &&
+							abm[i].topLeft.y <= enemy[j][k].bottomLeft.y) {
+
+							//left edge
+							if (abm[i].dest_x < enemy[j][k].x_pos - SIZE) {
+								enemy[j][k].relativeX = enemy[j][k].x_pos - SIZE;
+							}
+
+							//right edge
+							else if (abm[i].dest_x > enemy[j][k].x_pos + SIZE) {
+								enemy[j][k].relativeX = enemy[j][k].x_pos + SIZE;
+							}
+
+							//top edge
+							if (abm[i].dest_y < enemy[j][k].y_pos - SIZE) {
+								enemy[j][k].relativeY = enemy[j][k].y_pos - SIZE;
+							}
+
+							//bottom edge
+							else if (abm[i].dest_y > enemy[j][k].y_pos + SIZE) {
+								enemy[j][k].relativeY = enemy[j][k].y_pos + SIZE;
+							}
+
+							enemy[j][k].distX = abm[i].dest_x - enemy[j][k].relativeX;
+							enemy[j][k].distY = abm[i].dest_y - enemy[j][k].relativeY;
+
+							enemy[j][k].distTotal = sqrt((pow(enemy[j][k].distX, 2) + pow(enemy[j][k].distY, 2)));
+
+							if (enemy[j][k].distTotal <= abm[i].explosionRadius) {
+								enemy[j][k].launched = false;
+
+								if (j == 0)
+									(*curr_enemy_count)--;
+							}
+						}
 					}
 				}
-
-			}
-		}
-	}
-}*/
-
-void hitDetection(struct abmData * abm, Enemy * enemy) {
-	for (int i = 0; i < ABM_COUNT; i++) {
-		if (abm[i].arrived && !abm[i].exploded) {
-			for (int j = 0; j < ENEMY_COUNT; j++) {
-				if (enemy[j].launched) {
-					//left edge
-					if (abm[i].dest_x < enemy[j].x_pos - SIZE) {
-						enemy[j].relativeX = enemy[j].x_pos - SIZE;
-					}
-					//right edge
-					else if (abm[i].dest_x > enemy[j].x_pos + SIZE) {
-						enemy[j].relativeX = enemy[j].x_pos + SIZE;
-					}
-
-					//top edge
-					if(abm[i].dest_y < enemy[j].y_pos-SIZE) {
-						enemy[j].relativeY = enemy[j].y_pos - SIZE;
-					}
-					//bottom edge
-					else if (abm[i].dest_y > enemy[j].y_pos + SIZE) {
-						enemy[j].relativeY = enemy[j].y_pos + SIZE;
-					}
-
-					enemy[j].distX = abm[i].dest_x - enemy[j].relativeX;
-					enemy[j].distY = abm[i].dest_y - enemy[j].relativeY;
-					enemy[j].distTotal = sqrt((pow(enemy[j].distX, 2) + pow(enemy[j].distY, 2)));
-
-					if (enemy[j].distTotal <= abm[i].explosionRadius) {
-						printf("hit");
-						enemy[j].launched = false;
-					}
-
-				}
-
 			}
 		}
 	}
 }
-
