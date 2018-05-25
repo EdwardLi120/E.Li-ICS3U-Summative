@@ -1,7 +1,7 @@
 //movement.cpp
 //#include "stdafx.h"
 #include <stdio.h>
-#include <allegro5/allegro.h> // Include the allegro header file.
+#include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
 #include <allegro5/allegro_ttf.h>
 #include <allegro5/allegro_image.h>
@@ -12,7 +12,7 @@
 #include <stdlib.h>
 
 
-void playerMovement(ALLEGRO_DISPLAY *display, ALLEGRO_TIMER *timer, ALLEGRO_BITMAP *imageCrosshair, ALLEGRO_EVENT_QUEUE *event_queue, Crosshair crosshair, struct abmData * abm, Enemy * enemy, int  * curr_num_enemy, int * num_spawned, Mirv * mirv) {
+void playerMovement(ALLEGRO_DISPLAY *display, ALLEGRO_TIMER *timer, ALLEGRO_BITMAP *imageCrosshair, ALLEGRO_BITMAP *imageBase, ALLEGRO_EVENT_QUEUE *event_queue, Crosshair crosshair, struct abmData * abm, Enemy enemy[ENEMY_COUNT][SPLIT_COUNT], int  * curr_enemy_count, int * num_spawned) {
 
 	//ship.x = SCREEN_W / 2.0 - BOUNCER_SIZE / 2.0;
 	//ship.y = SCREEN_H / 2.0 - BOUNCER_SIZE / 2.0;
@@ -33,21 +33,12 @@ void playerMovement(ALLEGRO_DISPLAY *display, ALLEGRO_TIMER *timer, ALLEGRO_BITM
 		if (ev.type == ALLEGRO_EVENT_TIMER) {  //update every 1/60 of a second
 			draw = true;
 
-			print_arrive(abm, &count);
-
 			updateAbm(abm);
 			abmArrival(abm);
-			spawnEnemy(enemy, curr_num_enemy, num_spawned);
+			hitDetection(abm, enemy, curr_enemy_count);
+			spawnEnemy(enemy, curr_enemy_count, num_spawned);
 			updateEnemy(enemy);
-			enemyArrival(enemy, curr_num_enemy);
-
-			spawnMirv(enemy, mirv);
-			updateMirv(mirv);
-			mirvArrival(mirv, enemy);
-
-			hitDetection(abm, enemy);
-
-
+			enemyArrival(enemy, curr_enemy_count);
 		}
 
 		else if (ev.type == ALLEGRO_EVENT_DISPLAY_CLOSE) {
@@ -122,7 +113,9 @@ void playerMovement(ALLEGRO_DISPLAY *display, ALLEGRO_TIMER *timer, ALLEGRO_BITM
 
 			al_clear_to_color(al_map_rgb(0, 0, 0));  //clear screen to black to create illusion of animation; draw & clear screen, draw & clear screen...
 
-			drawCrosshair(imageCrosshair, crosshair);
+			drawCrosshair(imageCrosshair, &crosshair);
+
+			drawBase(imageBase);
 
 			drawAbm(abm);
 
@@ -130,18 +123,22 @@ void playerMovement(ALLEGRO_DISPLAY *display, ALLEGRO_TIMER *timer, ALLEGRO_BITM
 
 			drawEnemy(enemy);
 
-			drawMirv(mirv);
+			printf("Spawned: %d\n", *num_spawned);
 
 			al_flip_display();
 		}
 	}
 	al_destroy_bitmap(imageCrosshair);
+	al_destroy_bitmap(imageBase);
 	al_destroy_timer(timer);
 	al_destroy_display(display);
 	al_destroy_event_queue(event_queue);
 }
 
-void drawCrosshair(ALLEGRO_BITMAP *imageCrosshair, struct crosshairData crosshair) {
-	al_draw_bitmap(imageCrosshair, crosshair.x-27, crosshair.y-23, 0);
+void drawCrosshair(ALLEGRO_BITMAP *imageCrosshair, Crosshair * crosshair) {
+	al_draw_bitmap(imageCrosshair, crosshair->x-27, crosshair->y-23, 0);
 }
 
+void drawBase(ALLEGRO_BITMAP *imageBase) {
+	al_draw_bitmap(imageBase, 25, 25, 0);
+}
