@@ -32,9 +32,9 @@
 			<Add option="-Wall" />
 		</Compiler>
 		<Unit filename="Summative.cbp" />
-		<Unit filename="abmArrival.cpp" />
+		<Unit filename="abm.cpp" />
+		<Unit filename="base.cpp" />
 		<Unit filename="enemies.cpp" />
-		<Unit filename="fire.cpp" />
 		<Unit filename="header.h" />
 		<Unit filename="hit detection.cpp" />
 		<Unit filename="initialization.cpp" />
