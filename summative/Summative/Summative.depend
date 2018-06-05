@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1527186002 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\enemies.cpp
+1528225822 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\enemies.cpp
 	<stdio.h>
 	<math.h>
 	<allegro5/allegro.h>
@@ -12,7 +12,7 @@
 	<time.h>
 	<stdlib.h>
 
-1527186927 p:\ics3u\summative\e.li-ics3u-summative\summative\summative\header.h
+1528227787 p:\ics3u\summative\e.li-ics3u-summative\summative\summative\header.h
 
 1526495006 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\firing.cpp
 	<stdio.h>
@@ -24,7 +24,7 @@
 	<allegro5/allegro_primitives.h>
 	"header.h"
 
-1527186663 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\initialization.cpp
+1528228596 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\initialization.cpp
 	<stdio.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_font.h>
@@ -67,7 +67,7 @@
 	<time.h>
 	<stdlib.h>
 
-1527186001 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\hit detection.cpp
+1528225827 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\hit detection.cpp
 	<stdio.h>
 	<math.h>
 	<allegro5/allegro.h>
@@ -80,7 +80,7 @@
 	<time.h>
 	<stdlib.h>
 
-1527186663 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\main.cpp
+1528227787 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\main.cpp
 	<stdio.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_font.h>
@@ -92,7 +92,7 @@
 	<time.h>
 	<stdlib.h>
 
-1527186989 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\movement.cpp
+1527276060 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\movement.cpp
 	<stdio.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_font.h>
@@ -104,7 +104,7 @@
 	<time.h>
 	<stdlib.h>
 
-1527186003 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\abm.cpp
+1528134529 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\abm.cpp
 	<stdio.h>
 	<math.h>
 	<allegro5/allegro.h>
@@ -120,6 +120,31 @@
 1527186361 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\base.cpp
 	<stdio.h>
 	<math.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+	"header.h"
+	<time.h>
+	<stdlib.h>
+
+1527277601 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\text.cpp
+	<stdio.h>
+	<math.h>
+	<allegro5/allegro.h>
+	<allegro5/allegro_font.h>
+	<allegro5/allegro_ttf.h>
+	<allegro5/allegro_image.h>
+	<allegro5/allegro_native_dialog.h>
+	<allegro5/allegro_primitives.h>
+	"header.h"
+	<time.h>
+	<stdlib.h>
+
+1528228365 source:p:\ics3u\summative\e.li-ics3u-summative\summative\summative\game_loop.cpp
+	<stdio.h>
 	<allegro5/allegro.h>
 	<allegro5/allegro_font.h>
 	<allegro5/allegro_ttf.h>

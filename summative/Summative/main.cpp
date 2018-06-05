@@ -1,4 +1,4 @@
-//main.cpp
+//#include "stdafx.h"
 #include <stdio.h>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_font.h>
@@ -12,33 +12,65 @@
 
 int main(int argc, char **argv)
 {
-	//allegro variables
+
 	ALLEGRO_DISPLAY *display = NULL;
 	ALLEGRO_TIMER *timer = NULL;
 	ALLEGRO_BITMAP *imageCrosshair = NULL;
-	ALLEGRO_BITMAP *imageBase = NULL;
 	ALLEGRO_EVENT_QUEUE *event_queue = NULL;
+	ALLEGRO_FONT * font;
+	ALLEGRO_BITMAP *background = NULL;
+	ALLEGRO_BITMAP *imageUfo = NULL;
+	ALLEGRO_BITMAP *imageBomb[5] = { NULL };
+	ALLEGRO_BITMAP *imageLauncher = NULL;
+	ALLEGRO_BITMAP *ground = NULL;
+	ALLEGRO_BITMAP *imageBase = NULL;
 
-	//object variable
+	Level level;
 	Crosshair crosshair;
-	Abm abm[ABM_COUNT]; //30 anti-ballstic missiles
-	Enemy enemy[ENEMY_COUNT][SPLIT_COUNT];
+	Abm abm[ABM_COUNT];
+	Explosion explosion[ABM_COUNT];
+	Base base[6];
 
-	int lives = 3;
-	int curr_enemy_count = 0;  //num of enemies on screen
-	int num_spawned = 0;
+	//variables to be malloc'd
+	Enemy ** enemy = NULL;
+	Ufo * ufo = NULL;
+	Bomb * bomb = NULL;
+
+	int  colorMap[NUM_COLORS][3];
+	int theme[COLORS_PER_THEME];
+
+	oneTimeInit(&level);
+
+	//malloc arrays
+	enemy = (Enemy **)malloc(level.spawnLimit * sizeof(Enemy *));
+	for (int i = 0; i < level.spawnLimit; i++) {
+		enemy[i] = (Enemy *)malloc(SPLIT_COUNT * sizeof(Enemy));
+	}
+
+	ufo = (Ufo *)malloc(level.ufoSpawnLimit * sizeof(Ufo));
+	bomb = (Bomb *)malloc(level.bombSpawnLimit * sizeof(Bomb));
+
 
 	srand(time(0));
 
-	initAllegro(&display, &timer, &imageCrosshair, &imageBase, &event_queue);
+	initAllegro(&display, &timer, &imageCrosshair, &event_queue, &font, &background, &imageUfo, &level, imageBomb, &imageLauncher, &ground, &imageBase);
 
 	initCrosshair(&crosshair, imageCrosshair);
 
-	initAbm(abm);
+	initLevel(&level);
 
-	initEnemy(enemy);
-											    //or &crosshair?
-	playerMovement(display, timer, imageCrosshair, event_queue, crosshair, abm, enemy, &curr_enemy_count, &num_spawned);
+	initAbm(abm, explosion);
+
+	initEnemy(enemy, &level, ufo, bomb);
+
+	initBase(base, 6);
+
+	initColorMap(colorMap);
+
+	generateTheme(theme);
+
+	playerMovement(display, timer, imageCrosshair, event_queue, crosshair, abm, enemy, font, base, explosion, theme, colorMap, &level, background,
+		imageUfo, ufo, imageBomb, bomb, imageLauncher, ground, imageBase);
 
 
 	//al_set_target_bitmap(image);
